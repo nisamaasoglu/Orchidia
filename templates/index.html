@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orchidia — AI Orchid Care Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="bg-orbs"><span></span><span></span><span></span></div>
+
+  <header class="hero">
+    <div class="logo">🌸 <span>Orchidia</span></div>
+    <h1>Know your orchid.<br>Give it exactly what it needs.</h1>
+    <p class="subtitle">Upload a photo — Orchidia identifies the species and reads live
+      conditions to tell you precisely how to care for it.</p>
+  </header>
+
+  <main>
+    <section class="upload-card" id="uploadCard">
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <div class="dz-inner" id="dzInner">
+          <div class="dz-icon">📷</div>
+          <p><strong>Drop an orchid photo</strong> or click to browse</p>
+          <span class="dz-hint">JPG, PNG · up to 8 MB</span>
+        </div>
+        <img id="preview" alt="preview" hidden>
+      </div>
+      <button class="btn-primary" id="analyzeBtn" disabled>Identify & Analyze</button>
+    </section>
+
+    <section class="results" id="results" hidden>
+      <div class="result-head">
+        <div>
+          <span class="eyebrow">Identified species</span>
+          <h2 id="speciesName">—</h2>
+          <p id="speciesDesc" class="muted"></p>
+        </div>
+        <div class="confidence-ring" id="confRing">
+          <span id="confValue">0%</span>
+          <small>confidence</small>
+        </div>
+      </div>
+
+      <div class="badges">
+        <span class="badge" id="difficultyBadge">—</span>
+        <span class="badge water" id="waterBadge">💧 —</span>
+        <span class="badge status" id="statusBadge">—</span>
+      </div>
+
+      <h3 class="section-title">Live conditions</h3>
+      <div class="sensor-grid" id="sensorGrid"></div>
+
+      <h3 class="section-title">Care guidance</h3>
+      <ul class="tips" id="tipsList"></ul>
+
+      <button class="btn-ghost" id="againBtn">Analyze another photo</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Orchidia · AI-powered orchid identification & care · Built with Flask + scikit-learn</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
